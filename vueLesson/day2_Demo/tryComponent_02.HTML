@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+<body>
+
+    <div id="app">
+        <ol>
+                <!-- v-for="item,index in todoList" -->
+            <todo-item 
+            v-for="item,index in todoList"
+                v-bind:todo="item"
+                v-bind:th="ind"
+            >
+            </todo-item>
+        </ol>
+    </div>
+
+
+<script>
+
+    Vue.component('todo-item', {
+        props: ['todo','th'],
+        // props:  {   //property
+        //     todo:{t:0},  //初值
+        //     th: 0   //初值
+        // },
+        template: "<li>{{todo.text}} -- {{th}}</li>"
+    }) 
+    var app = new Vue({
+        el: '#app',
+        data: {
+            ind:'index',
+            todoList: [
+                { id: 0, text: "work A"},
+                { id: 1, text: "work B"},
+                { id: 2, text: "work C"} 
+            ]
+        }
+    })
+
+</script>
+
+</body>
+</html>

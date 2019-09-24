@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<style>
+    .act{
+        color:red; 
+    }
+</style>
+</head>
+<body>
+   
+    <div id="lab"  v-bind:style="{ fontSize:counter +'px'  }"
+    v-bind:class="{act:isAct}"> 
+     {{message}}  <br>
+     {{counter}}<br>
+     <button v-on:click = 'counter+=5'>
+        放大
+     </button>
+     <button v-on:click = 'counter-=5'>
+        縮小
+     </button>
+    </div>
+
+<script>
+var app=new Vue({
+    el:'#lab',
+    data:{
+        message:'hello',
+        color:'DarkRed',
+        size:'3',
+        styleSet: 'italic' ,
+        counter:25,
+        isAct:false
+    }  
+    
+}) 
+</script>
+
+</body>
+</html>
