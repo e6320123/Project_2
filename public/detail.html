@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="jquery.js"></script>
+    <style>
+        h2{
+            background-color: blanchedalmond;
+        }
+        #detail{
+            border: 2px dotted black;  
+        } 
+    </style>
+    <title>Document</title>
+</head>
+<body>
+       
+    <h2>訂購明細</h2>
+    <div id='detail'>
+        <p>{{movieName}}</p>
+        <p>{{theater}}影城</p>
+        <p>{{day}}</p>
+        <p>{{time}}</p>
+        <p>{{ticket}}</p>
+        <p>{{seat}}</p>
+        <p>{{hall}}</p> 
+        <pre>個人明細
+    姓名
+    信箱
+    電話</pre>
+    
+
+<form action="sql.php" method='post'> 
+<input type="hidden" name='movieName' v-bind:value='movieName'>
+<input type="hidden" name='theater' v-bind:value='theater'>
+<input type="hidden" name='day' v-bind:value='day'>
+<input type="hidden" name='time' v-bind:value='time'>
+<input type="hidden" name='ticket' v-bind:value='ticket'>
+<input type="hidden" name='seat' v-bind:value='seat'>
+<input type="hidden" name='hall' v-bind:value='hall'>
+<input type='submit' name='btn' value='確認送出'>
+<input type='submit' name='btn' value='取消訂購'>
+</form>
+</div>
+<script>  
+var orderData =  {
+    movieName: 'Joker',
+    theater: 'taichung',
+    day: '9/25',
+    time: '14:00',
+    ticket:'全票280',
+    seat:'b3',
+    hall:'第10廳'
+}; 
+    var app1 = new Vue({
+        el: "#detail",
+        data: {
+            movieName: ' ',
+            theater: ' ',
+            day: '  ',
+            time: ' ',
+            ticket:' ',
+            seat:' ',
+            hall:' '
+        },
+        methods:{
+           getData: function(){
+               this.movieName=orderData.movieName; 
+               this.theater=orderData.theater; 
+               this.day=orderData.day; 
+               this.time=orderData.time; 
+               this.ticket=orderData.ticket; 
+               this.seat=orderData.seat; 
+               this.hall=orderData.hall; 
+           }
+        }
+    });
+    app1.getData();
+  
+   
+
+
+localStorage.setItem('dataList', JSON.stringify(orderData));  
+
+</script>
+</body>
+</html>
