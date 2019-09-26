@@ -1,53 +1,57 @@
 <template>
-    <div class="container">
-        <h1 class="text-center my-5">訂購明細</h1> 
-    <div class='detail'>
-        <p>{{movie}}</p>
-        <p>台中影城</p>
-        <p>9.25 [星期三]</p>
-        <p>14.05</p>
-        <p>全票280</p>
-        <p>座位b3</p>
-        <p>第十廳</p>
-        <pre>個人明細
-    姓名
-    信箱
-    電話</pre>
-    </div>
 
-<form action="sql.php" method='post'> 
-<input type='submit' name='btn' value='確認送出'></button>
-<input type='submit' name='btn' value='取消訂購'></button> 
-</form>
-    </div>
+<h2>訂購明細</h2>
 
-   
 </template>
 
 <script>
-const data =  {
-    movieName: 'sky',
-    theater: 'taichung',
-    day: '9.25',
-    time: '14.00',
-    ticket:'full-280',
-    seat:'b3',
-    hall:'hall_10'
-}; 
-
-localStorage.setItem('dataList', JSON.stringify(data));  
-
-
-var app1 = new Vue({
-        el: "#app1",
-        data: {
-            message: 'Hello Vue!'
+var orderData = {
+            movieName: '返校Detention',
+            theater: 'taichung',
+            day: '9/25',
+            time: '14:00',
+            ticket: '全票280',
+            seat: 'b3',
+            hall: '第10廳'
+        };
+localStorage.setItem('dataList', JSON.stringify(orderData));
+export default {
+    data(){
+        return {
+              movieName: '1',
+              theater: '',
+              day: '',
+              time: '',
+              ticket: '',
+              seat: '',
+              hall: ''
         }
-    });
+    },
+    mounted() {
+        this.getData();
+    },
+    methods:{
+       getData: function(){
+            this.movieName=JSON.parse(localStorage.getItem('dataList')).movieName; 
+            this.theater=JSON.parse(localStorage.getItem('dataList')).theater; 
+            this.day=JSON.parse(localStorage.getItem('dataList')).day; 
+            this.time=JSON.parse(localStorage.getItem('dataList')).time; 
+            this.ticket=JSON.parse(localStorage.getItem('dataList')).ticket; 
+            this.seat=JSON.parse(localStorage.getItem('dataList')).seat; 
+            this.hall=JSON.parse(localStorage.getItem('dataList')).hall;
+       }
+    }
+    
+    
+}
 </script>
 
-
 <style>
-
-
+        h2 {
+            background-color: blanchedalmond;
+        }
+        #btn{
+            left:30px;
+            font-size: 28px;
+        }
 </style>

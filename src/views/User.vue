@@ -25,7 +25,7 @@ export default {
             account: '',
             password: '',
             email: '',
-            phone: ''
+            phone: '' 
         }
     },
     mounted() {

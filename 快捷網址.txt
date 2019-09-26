@@ -1,3 +1,2 @@
 http://localhost/CYcinemas/public/detail.html
 http://localhost/Project_2/public/detail.html
-http://localhost/pro/sql.php
