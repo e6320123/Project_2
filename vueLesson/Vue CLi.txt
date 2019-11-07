@@ -1,8 +1,0 @@
-npm i -g @vue/cli  安裝
-
-npm create hello  設定新專案
-
-npm new build	建立資料夾
-
-vue.config.js--> 首頁從publicPath: 開始?
-		module.exports={ publicPath: './' }
