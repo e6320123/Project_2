@@ -1,11 +1,7 @@
 <template>
   <div id="app">
     <Navbar></Navbar>
-    <!-- <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div> -->
-    <router-view />
+    <router-view v-if="isRouterAlive" />
     <GoTop></GoTop>
   </div>
 </template>
@@ -18,10 +14,32 @@ export default {
   components: {
     Navbar,
     GoTop
+  },
+  mounted() {
+    // localStorage.setItem('logAccount', 'admin')
+  },
+  provide(){
+    return{
+      reload:this.reload
+    }
+  },
+  data(){
+    return{
+      isRouterAlive:true
+    }
+  },
+  methods: {
+    reload(){
+      this.isRouterAlive=false;
+      this.$nextTick(function(){
+        this.isRouterAlive = true;
+      })
+    }
   }
 }
 </script>
 
 <style lang="scss">
-@import '~bootstrap/scss/bootstrap';
+@import "~bootstrap/scss/bootstrap";
+@import "@/assets/scss/style";
 </style>

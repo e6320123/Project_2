@@ -1,6 +1,6 @@
 <template>
   <div class="row">
-    <div class="col-3 mb-3" v-for="(item, index) in imgAr" :key="index">
+    <div class="col-12 col-md-3 mb-3" v-for="(item, index) in imgAr" :key="index">
       <div class="card">
         <img src="http://fakeimg.pl/400x300/" class="card-img-top" alt="..." />
         <div class="card-body">

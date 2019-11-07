@@ -2,6 +2,8 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+
+// Bootstrap
 import 'bootstrap'
 
 // vue toast
@@ -14,31 +16,29 @@ import Axios from 'axios'
 import VueAxios from 'vue-axios'
 Vue.use(VueAxios, Axios);
 
+// font-awesome
+import 'font-awesome/css/font-awesome.css'
+
+// UIkit
+import UIkit from 'uikit'
+import Icons from 'uikit/dist/js/uikit-icons'
+import 'uikit/dist/css/uikit.min.css'
+UIkit.use(Icons)
+Vue.prototype.$uikit = UIkit;
+
+// youtube
+import VueYouTubeEmbed from 'vue-youtube-embed'
+Vue.use(VueYouTubeEmbed)
+Vue.use(VueYouTubeEmbed, { global: false })
+
 Vue.config.productionTip = false
+
+Vue.prototype.$api = 'https://cy-cinemas.ml'
+
+Vue.prototype.$url = "http://localhost:80/"
 
 new Vue({
   router,
   store,
   render: h => h(App)
 }).$mount('#app')
-
-router.beforeEach((to, from, next) => {
-  // console.log(to);
-  if (to.matched.some(record => record.meta.requiresAuth)) {
-    switch (to.path) {
-      case '/user':
-        if (localStorage.getItem('logAccount')) next();
-        else next(from.path);
-        break;
-      case '/backEnd':
-        if (localStorage.getItem('logAccount') == 'admin') next();
-        else next(from.path);
-        break;
-      default:
-        next();
-        break;
-    }
-  } else {
-    next();
-  }
-})
